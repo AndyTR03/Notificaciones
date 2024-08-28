@@ -1,0 +1,331 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fa;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow-x: hidden; /* Sin desplazamiento horizontal */
+    display: flex;
+    flex-direction: row; /* Cambiar a fila para alinear sidebar y dashboard */
+    overflow: hidden;
+}
+
+.dashboard {
+    flex-grow: 1; /* Permite que el dashboard ocupe el espacio restante */
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-height: 100vh; /* Asegura que el contenido principal ocupe al menos la altura de la ventana */
+    overflow-y: auto; /* Permite el desplazamiento vertical si el contenido sobrepasa la pantalla */
+}
+
+.section {
+    padding: 20px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #e1e5eb;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #3498db;
+    border-radius: 10px;
+    width: 70%; /* Ajusta el ancho según el progreso deseado */
+}
+
+/* Estilos para el h2 */
+h2 {
+    font-size: 2rem; /* Tamaño base del texto */
+    margin: 0 0 20px;
+}
+
+/* Estilos para la barra lateral */
+.sidebar {
+    width: 250px; /* Ajustar el ancho de la barra lateral */
+    height: 100vh;
+    background-color: #2c3e50;
+    position: fixed; /* Mantiene el sidebar fijo */
+    top: 0;
+    left: -250px; /* Inicialmente fuera de vista */
+    transition: left 0.3s ease;
+    padding: 20px;
+    color: white;
+    z-index: 1000;
+    overflow-y: auto; /* Asegura que el contenido de la barra lateral sea desplazable */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar.active {
+    left: 0; /* Mueve la barra lateral a la vista */
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar-header h3 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.sidebar ul li {
+    margin: 20px 0;
+    transition: transform 0.2s;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 15px;
+    display: block;
+    border-radius: 5px;
+}
+
+.sidebar ul li a:hover {
+    background-color: #575757;
+    transform: scale(1.05);
+}
+
+.welcome-message {
+    position: relative;
+    margin-top: 10px;
+    color: white;
+    font-size: 2.5vw;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    text-align: left;
+}
+
+.toggle-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #2c3e50;
+    z-index: 1100;
+    transition: left 0.3s ease;
+}
+
+.toggle-btn.hidden {
+    display: none;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-info h4 {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.user-info p {
+    margin: 0;
+    font-size: 12px;
+    color: #666;
+}
+
+.settings-icon {
+    margin-left: auto;
+    font-size: 18px;
+    color: #999;
+}
+
+/* Difuminar el fondo cuando el modal está activo */
+.modal {
+    display: none; /* El modal estará oculto por defecto */
+    position: fixed; /* Posicionamiento fijo para cubrir toda la pantalla */
+    z-index: 1000; /* Asegúrate de que el modal esté por encima de otros elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con transparencia */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    display: flex; /* Asegurarse de usar flexbox para centrar */
+}
+
+.modal-content {
+    background-color: #fff; /* Fondo blanco para el contenido del modal */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%; /* Ancho responsive del modal */
+    max-width: 500px; /* Ancho máximo */
+    max-height: 80%; /* Altura máxima del modal */
+    overflow-y: auto; /* Permitir scroll vertical si es necesario */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+    border-radius: 5px; /* Bordes redondeados */
+    position: relative; /* Para posicionar el botón de cerrar */
+}
+
+/* Estilo para el botón de cerrar */
+.close-btn {
+    position: absolute; /* Posicionar en la esquina */
+    top: 10px; /* Margen desde arriba */
+    right: 10px; /* Margen desde la derecha */
+    font-size: 24px; /* Tamaño del icono */
+    cursor: pointer; /* Cambiar cursor a mano */
+    color: black; /* Color inicial */
+    transition: color 0.3s; /* Transición suave de color */
+}
+
+/* Cambiar color al hacer clic */
+.close-btn:hover {
+    color: red; /* Color rojo al hacer clic */
+}
+
+/* Espaciado para los botones */
+.button-container {
+    display: flex; /* Usar flexbox para alinear los botones */
+    justify-content: center; /* Centrar los botones */
+    margin-top: 20px; /* Espaciado superior */
+}
+
+.confirm-btn, .cancel-btn {
+    padding: 10px 20px; /* Espaciado interno para los botones */
+    margin: 0 10px; /* Espaciado lateral entre botones */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar cursor a mano */
+}
+
+.confirm-btn {
+    background-color: red; /* Color rojo para el botón de confirmar */
+    color: white; /* Texto blanco */
+}
+
+.cancel-btn {
+    background-color: blue; /* Color azul para el botón de cancelar */
+    color: white; /* Texto blanco */
+}
+
+.confirm-btn:hover {
+    background-color: darkred; /* Color más oscuro al pasar el mouse */
+}
+
+.cancel-btn:hover {
+    background-color: darkblue; /* Color más oscuro al pasar el mouse */
+}
+
+.modal-open {
+    pointer-events: none; /* Desactiva todos los eventos de puntero */
+}
+
+.modal-open .modal {
+    pointer-events: auto; /* Activa eventos de puntero para el modal */
+}
+
+/* Estilos para pantallas pequeñas (máximo 768px) */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column; /* Cambia a columna en pantallas más pequeñas */
+    }
+
+    .dashboard {
+        margin-left: 0;
+    }
+
+    .sidebar {
+        width: 30vw; /* Ajusta el ancho relativo de la barra lateral */
+        left: -30vw; /* Posición inicial fuera de la vista */
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    .sidebar-header h3 {
+        font-size: 20px; /* Ajustar el tamaño del texto para pantallas pequeñas */
+    }
+
+    .sidebar ul li a {
+        font-size: 16px; /* Ajustar el tamaño del texto para pantallas pequeñas */
+    }
+
+    h2 {
+        font-size: 1.5rem; /* Ajustar el tamaño del h2 para pantallas pequeñas */
+    }
+
+    .welcome-message {
+        font-size: 4vw; /* Aumenta el tamaño relativo en pantallas pequeñas */
+    }
+
+    .user-info h4 {
+        font-size: 12px;
+    }
+
+    .user-info p {
+        font-size: 10px;
+    }
+}
+
+/* Estilos para pantallas muy pequeñas (máximo 480px) */
+@media (max-width: 480px) {
+    .toggle-btn {
+        font-size: 24px; /* Ajustar tamaño del botón para pantallas muy pequeñas */
+    }
+
+    .sidebar {
+        width: 55vw; /* Ajusta el ancho del sidebar en pantallas muy pequeñas */
+        left: -55vw; /* Ajusta la posición inicial fuera de la vista */
+    }
+
+    .sidebar.active {
+        left: 0; /* Mueve el sidebar a la vista */
+    }
+
+    h2 {
+        font-size: 1.2rem; /* Ajustar el tamaño del h2 para pantallas muy pequeñas */
+    }
+
+    .welcome-message {
+        font-size: 6vw; /* Aumenta aún más el tamaño relativo en pantallas muy pequeñas */
+    }
+
+    .sidebar-header h3 {
+        font-size: 18px; /* Ajustar el tamaño del texto */
+    }
+
+    .sidebar ul li a {
+        font-size: 14px; /* Ajustar el tamaño del texto */
+    }
+
+    .user-info h4 {
+        font-size: 10px;
+    }
+
+    .user-info p {
+        font-size: 8px;
+    }
+}
