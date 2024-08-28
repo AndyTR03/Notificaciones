@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+    <!-- Botón para abrir/cerrar la barra lateral -->
+    <div class="toggle-btn" onclick="toggleSidebar()">&#9776;</div>
+
+    <!-- Barra lateral -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>Menú</h3>
+            <button onclick="toggleSidebar()" style="color: white; background: none; border: none; font-size: 24px;">&times;</button>
+        </div>
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Servicios</a></li>
+            <li><a href="#">Acerca de</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="dashboard">
+        <div class="section">
+            <h2>Proyectos</h2>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
