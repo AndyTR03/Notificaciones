@@ -19,7 +19,7 @@
         <li><a href="Login.php"><i class="fas fa-arrow-right"></i> Login</a></li>
         <li><a href="Usuarios.php"><i class="fas fa-arrow-right"></i> Usuario</a></li>
         <li><a href="departamento.php"><i class="fas fa-arrow-right"></i> Departamento</a></li>
-        <li><a href="#"><i class="fas fa-arrow-right"></i> Notificación</a></li>
+        <li><a href="Notificaciones.php"><i class="fas fa-arrow-right"></i> Notificación</a></li>
     </ul>
 
     <!-- Información del usuario -->

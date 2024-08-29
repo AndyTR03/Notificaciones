@@ -7,7 +7,7 @@ if (!isset($_SESSION['username'])) {
 include 'conexion.php'; // Incluir el archivo de conexión
 
 // Consulta para obtener los datos de la tabla login
-$sql = "SELECT id, username FROM login";
+$sql = "SELECT id, username ,password FROM login";
 $result = $conn->query($sql);
 ?>
 
@@ -16,7 +16,7 @@ $result = $conn->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Usuarios</title>
+    <title>Lista de Login</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="Styles.css">
 </head>
@@ -30,7 +30,8 @@ $result = $conn->query($sql);
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Username</th>
+                        <th>Usuario</th>
+                        <th>Contraseña</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,6 +42,7 @@ $result = $conn->query($sql);
                             echo "<tr>";
                             echo "<td>" . htmlspecialchars($row["id"]) . "</td>"; // Escapar salida para seguridad
                             echo "<td>" . htmlspecialchars($row["username"]) . "</td>";
+                            echo "<td>" . htmlspecialchars($row["password"]) . "</td>";
                             echo "</tr>";
                         }
                     } else {
